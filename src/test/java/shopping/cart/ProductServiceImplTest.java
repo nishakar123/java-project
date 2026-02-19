@@ -1,3 +1,5 @@
+package shopping.cart;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shopping.cart.enums.ProductPrice;
@@ -18,9 +20,9 @@ public class ProductServiceImplTest {
         Product product2 = new Product(ProductPrice.cornflakes.name(), 1, ProductPrice.cornflakes.getPrice());
         Product product3 = new Product(ProductPrice.weetabix.name(), 1, ProductPrice.weetabix.getPrice());
         ShoppingCartServiceImpl shoppingCartServiceImpl = new ShoppingCartServiceImpl();
-        shoppingCartServiceImpl.addProductInShoppingCart(product1);
-        shoppingCartServiceImpl.addProductInShoppingCart(product2);
-        shoppingCartServiceImpl.addProductInShoppingCart(product3);
+        shoppingCartServiceImpl.addProduct(product1);
+        shoppingCartServiceImpl.addProduct(product2);
+        shoppingCartServiceImpl.addProduct(product3);
         productServiceImpl = new ProductServiceImpl(shoppingCartServiceImpl);
     }
 
@@ -35,7 +37,8 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testAddProductInShoppingCart() {
+    public void testProductInShoppingCart() {
+        System.out.println(" : " + productServiceImpl.getProductsWithCount());
         assert(productServiceImpl.getProductsWithCount().containsKey("cornflakes"));
         assert(productServiceImpl.getProductsWithCount().get("cornflakes") == 2);
     }

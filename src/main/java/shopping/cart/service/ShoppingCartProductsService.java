@@ -1,8 +1,7 @@
-package shopping.cart.service.impl;
+package shopping.cart.service;
 
-import shopping.cart.records.ShoppingCartRecords;
+import shopping.cart.records.ShoppingCartDetails;
 
 public interface ShoppingCartProductsService {
-    ShoppingCartRecords getShoppingCartRecords();
-
+    ShoppingCartDetails getShoppingCartDetails();
 }

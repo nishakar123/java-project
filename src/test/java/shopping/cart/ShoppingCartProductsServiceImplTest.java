@@ -1,3 +1,5 @@
+package shopping.cart;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shopping.cart.enums.ProductPrice;
@@ -17,9 +19,9 @@ public class ShoppingCartProductsServiceImplTest {
         Product product3 = new Product(ProductPrice.weetabix.name(), 1, ProductPrice.weetabix.getPrice());
 
         ShoppingCartServiceImpl shoppingCartServiceImpl = new ShoppingCartServiceImpl();
-        shoppingCartServiceImpl.addProductInShoppingCart(product1);
-        shoppingCartServiceImpl.addProductInShoppingCart(product2);
-        shoppingCartServiceImpl.addProductInShoppingCart(product3);
+        shoppingCartServiceImpl.addProduct(product1);
+        shoppingCartServiceImpl.addProduct(product2);
+        shoppingCartServiceImpl.addProduct(product3);
 
         ProductServiceImpl productServiceImpl = new ProductServiceImpl(shoppingCartServiceImpl);
 
@@ -27,10 +29,11 @@ public class ShoppingCartProductsServiceImplTest {
     }
 
     @Test
-    public void testGetShoppingCartRecords() {
-        shoppingCartProductServiceImpl.getShoppingCartRecords();
-        assert(shoppingCartProductServiceImpl.getShoppingCartRecords().tax() == 1.88);
-        assert(shoppingCartProductServiceImpl.getShoppingCartRecords().shoppingCarts().size() == 2);
+    public void testGetShoppingCartDetails() {
+        assert(shoppingCartProductServiceImpl.getShoppingCartDetails().subtotal() == 15.02);
+        assert(shoppingCartProductServiceImpl.getShoppingCartDetails().tax() == 1.88);
+        assert(shoppingCartProductServiceImpl.getShoppingCartDetails().total() == 16.9);
+        assert(shoppingCartProductServiceImpl.getShoppingCartDetails().shoppingCarts().size() == 2);
     }
 
 }
